@@ -1,0 +1,31 @@
+wc -l <file> # wc -l list number of lines in the file 
+wc <file> # summary file 
+head -n3 <file> # display first 3 line in file
+tail -n3 <file> # display last 3 line in the file
+sort <file> > <out_file> # sort a file and create a file to store it (<out_file>)
+
+
+#using grep to remove the header
+#grep : select the line containing that word
+grep 'Uruguay' Uruguay.txt > Uruguay_with_no_header.txt
+grep -v 'country' Uruguay.txt > test_out.txt # remove 'the line that countain that word'
+
+
+# column selection by using cut 
+# select column 4
+cut -f4 Uruguay_with_no_header.txt
+
+
+# combine "cut" + "tail" or "head" command to get max/min value
+
+
+#by using 'pipes' | , we can combine many command at the same time
+grep 'Uruguay' Uruguay.txt | cut -f4 | sort | tail -n1 > Uruguay_LE_max2.txt
+OR
+grep 'Uruguay' Uruguay.txt | cut -f4 | sort -n| tail -n1 > Uruguay_LE_max2.txt
+OR
+grep 'Sweden' Sweden.txt | cut -f3,4 | sort | tail -n1 > Sweden_YearWith_lifeExp
+
+
+
+
